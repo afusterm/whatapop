@@ -31,3 +31,11 @@ node_modules
 
 # Optional REPL history
 .node_repl_history
+
+# OSX Desktop file
+.DS_Store
+
+# WebStorm preferences
+.idea
+
+
