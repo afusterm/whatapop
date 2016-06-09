@@ -1,3 +1,6 @@
 <div>
-    <h2>Aquí va la lista de productos</h2>
+    <div class="product-list" ng-repeat="product in $ctrl.products">
+        <img src="{{ $ctrl.getImageAbsolutePath(product.photos[0]) }}">
+        <label>{{ product.name }}</label>
+    </div>
 </div>
