@@ -1,13 +1,12 @@
 // obtiene todos los productos
 angular
     .module("whatapop")
-    .service("ProductService", function($http) {
+    .service("ProductService", function($http, Config) {
         this.getProducts = function() {
-            // TODO: el puerto mejor en una constante
-            return $http.get("http://localhost:8000/api/products");
+            return $http.get(Config.urlServer + Config.endpointProducts);
         };
         
         this.getImageAbsolutePath = function(path) {
-            return path ? ("http://localhost:8000/" + path) : undefined;
+            return path ? (Config.urlServer + "/" + path) : undefined;
         };
     });
