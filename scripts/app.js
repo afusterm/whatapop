@@ -1,4 +1,4 @@
-angular.module("whatapop", ["ngComponentRouter"]);
+angular.module("whatapop", ["ngComponentRouter", "ngSanitize"]);
 
 // modo de navegación HTML5 para que funcione el Single Page Application.
 angular.module("whatapop").config(function($locationProvider) {

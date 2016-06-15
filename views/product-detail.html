@@ -1,0 +1,15 @@
+<div class="row">
+    <div ng-repeat="photo in ::$ctrl.product.photos">
+        <img ng-src="{{ $ctrl.getImageAbsolutePath(photo) }}">
+    </div>
+    <div>
+        <div>{{ ::$ctrl.product.name }}</div>
+        <div ng-bind-html="::descHTML"></div>
+        <div>{{ ::$ctrl.product.category.name }}</div>
+        <div>{{ ::$ctrl.product.seller.nick }}</div>
+        <div class="avatar">
+            <img ng-src="{{ $ctrl.getImageAbsolutePath($ctrl.product.seller.avatar) }}">
+        </div>
+        <div>Precio {{ ::$ctrl.product.price | currency }}</div>
+    </div>
+</div> 

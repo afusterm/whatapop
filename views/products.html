@@ -1,15 +1,19 @@
-<nav>
-    <!-- lista desplegable con las categorías -->
-    <select ng-model="$ctrl.ProductsFilter.category">
-        <option value="">Todas las categorías</option>
-        <option ng-repeat="category in $ctrl.categories">{{ category.name }}</option>
-    </select>
-    <!-- filtrado por nombre -->
-    <input type="text" placeholder="Buscar producto" ng-model="$ctrl.ProductsFilter.name">
-</nav>
-<div>
-    <div class="product-list" ng-repeat="product in $ctrl.products | filter: { name: $ctrl.ProductsFilter.name } | filter: $ctrl.ProductsFilter.category">
-        <img src="{{ $ctrl.getImageAbsolutePath(product.photos[0]) }}">
-        <label>{{ product.name }}</label>
+<div class="row">
+    <div class="u-full-width">
+        <nav>
+            <!-- lista desplegable con las categorías -->
+            <select ng-model="$ctrl.ProductsFilter.category">
+                <option value="">Todas las categorías</option>
+                <option ng-repeat="category in $ctrl.categories">{{ ::category.name }}</option>
+            </select>
+            <!-- filtrado por nombre -->
+            <input type="text" placeholder="Buscar producto" ng-model="$ctrl.ProductsFilter.name">
+        </nav>
+
+        <div class="product-list" ng-repeat="product in $ctrl.products | filter: { name: $ctrl.ProductsFilter.name } | filter:{ category: { name: $ctrl.ProductsFilter.category} }">
+            <img ng-src="{{ $ctrl.getImageAbsolutePath(product.photos[0]) }}">
+            <label>{{ ::product.name }}</label>
+            <a ng-link="['Detail', { id: product.id }]">Ver detalle</a>
+        </div>
     </div>
 </div>

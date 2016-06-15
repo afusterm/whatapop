@@ -4,5 +4,6 @@ angular
         urlServer: "http://localhost:8000",
         endpointCategories: "/api/categories",
         endpointProducts: "/api/products",
-        endpointUsers: "/api/users"
+        endpointUsers: "/api/users",
+        urlHome: "http://localhost:3000"
     });
