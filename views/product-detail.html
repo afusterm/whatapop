@@ -4,12 +4,13 @@
     </div>
     <div>
         <div>{{ ::$ctrl.product.name }}</div>
-        <div ng-bind-html="::descHTML"></div>
+        <div ng-bind-html="$ctrl.validateHtml($ctrl.product.description)"></div>
         <div>{{ ::$ctrl.product.category.name }}</div>
         <div>{{ ::$ctrl.product.seller.nick }}</div>
         <div class="avatar">
             <img ng-src="{{ $ctrl.getImageAbsolutePath($ctrl.product.seller.avatar) }}">
         </div>
         <div>Precio {{ ::$ctrl.product.price | currency }}</div>
+        <div><input type="checkbox" ng-model="$ctrl.product.favorite" ng-change="$ctrl.saveFavorite($ctrl.product.favorite)" ng-true-value="1" ng-false-value="0">Favorito</div>
     </div>
 </div> 
