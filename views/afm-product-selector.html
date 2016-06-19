@@ -1,0 +1,9 @@
+<nav>
+    <!-- lista desplegable con las categorías -->
+    <select ng-model="ProductsFilter.category" ng-change="notifyFilter()">
+        <option value="">Todas las categorías</option>
+        <option ng-repeat="category in categories">{{ ::category.name }}</option>
+    </select>
+    <!-- filtrado por nombre -->
+    <input type="text" placeholder="Buscar producto" ng-model="ProductsFilter.name" ng-change="notifyFilter()">
+</nav>

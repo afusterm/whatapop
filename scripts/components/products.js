@@ -4,20 +4,20 @@ angular
     .module("whatapop")
     .component("products", {
         templateUrl: "views/products.html", 
-        controller: function(ProductService, CategoryService) {
+        controller: function(ProductService) {
             let self = this;
+
+            this.ProductsFilter = { category: "", name: "" };
 
             ProductService.getProducts().then(function (response) {
                 self.products = response.data;
             });
 
-            CategoryService.getCategories().then(function (response) {
-                self.categories = response.data;
-            });
-
             this.getImageAbsolutePath = ProductService.getImageAbsolutePath;
-
-            // filtro de productos
-            this.ProductsFilter = {category: "", name: ""};
+            
+            // actualizar el filtro
+            this.updateFilter = function(filter) {
+                this.ProductsFilter = filter;
+            };
         }
     });
