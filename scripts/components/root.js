@@ -10,9 +10,13 @@ angular
             name: "Detail",
             path: "/product-detail/:id",
             component: "productDetail"
+        }, {
+            name: "NewUser",
+            path: "/new-user",
+            component: "newUser"
         }],
         templateUrl: "views/root.html",
-        controller: function(Config) {
+        controller: ["Config", function(Config) {
             this.home = Config.urlHome;
-        }
+        }]
     });

@@ -1,0 +1,17 @@
+<div>
+    <label for="name">Nombre</label>
+    <input id="name" type="text" ng-model="$ctrl.user.name">
+    <label for="nick">Nick</label>
+    <input id="nick" type="text" ng-model="$ctrl.user.nick">
+    <label>Avatar</label>
+    <image-picker
+            image-selected="$ctrl.selectImage(imageFile)" image-deselected="$ctrl.deselectImage()">
+    </image-picker>
+    <label for="latitude">Latitud</label>
+    <input id="latitude" type="number" ng-model="$ctrl.user.latitude">
+    <label for="longitude">Longitud</label>
+    <input id="longitude" type="number" ng-model="$ctrl.user.longitude">
+    <label for="email">Correo electrónico</label>
+    <input id="email" type="email" ng-model="$ctrl.user.email">
+    <button ng-click="$ctrl.createUser()">Crear cuenta</button>
+</div>

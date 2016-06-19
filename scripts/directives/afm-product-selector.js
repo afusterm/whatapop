@@ -1,3 +1,7 @@
+"use strict";
+
+// directiva que muestra una lista desplegable con las categorías y una caja de texto para filtrar por
+// nombre de producto
 angular
     .module("whatapop")
     .directive("afmProductSelector", ["CategoryService", function(CategoryService) {

@@ -1,3 +1,7 @@
+"use strict";
+
+// componente que muestra los detalles de un producto
+
 angular
     .module("whatapop")
     .component("productDetail", {
@@ -5,8 +9,11 @@ angular
         controller: ["ProductService", "$scope", "$sce", function(ProductService, $scope, $sce) {
             let self = this;
             this.$routerOnActivate = function(next) {
+                // obtiene los datos del producto con el id pasado en la URL
                 ProductService.getProductById(next.params.id).then(function(response) {
                     self.product = response.data;
+                    // por defecto el campo favorito es 0. Los valores false y true se almacenan como cadenas. Por
+                    // simplificar se asigna el valor 0 como false y 1 como true
                     self.product.favorite = 0;
                     
                     // si se ha guardado el id del producto es porque es favorito
@@ -28,11 +35,12 @@ angular
                 });
             };
 
+            // obtiene la ruta absoluta de la imagen del producto
             this.getImageAbsolutePath = ProductService.getImageAbsolutePath;
-            
-            this.saveFavorite = function(selected) {
-                console.log("selected = " + selected);
 
+            // guarda el identificador del producto en el array "favorites" de localStorage. Este array
+            // contiene los identificadores de todos los productos que son favoritos
+            this.saveFavorite = function(selected) {
                 if (self.product !== 'undefined' && typeof(Storage) !== 'undefined') {
                     // obtener el objeto JSON favorites que contiene el array donde guarda los id's
                     let favorites = { ids: [] };
@@ -57,7 +65,8 @@ angular
                     localStorage.setItem("favorites", favStr);
                 }
             };
-            
+
+            // interpreta el texto html para mostrarlo en el navegador correctamente
             this.validateHtml = function(text) {
                 return $sce.trustAsHtml(text);
             };

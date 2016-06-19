@@ -5,5 +5,6 @@ angular
         endpointCategories: "/api/categories",
         endpointProducts: "/api/products",
         endpointUsers: "/api/users",
-        urlHome: "http://localhost:3000"
+        urlHome: "http://localhost:3000",
+        endpointImages: "/upload"
     });
