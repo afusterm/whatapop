@@ -1,7 +1,7 @@
 // obtiene todos los productos
 angular
     .module("whatapop")
-    .service("ProductService", function($http, Config) {
+    .service("ProductService", ["$http", "Config", function($http, Config) {
         this.getProducts = function() {
             return $http.get(Config.urlServer + Config.endpointProducts);
         };
@@ -13,4 +13,4 @@ angular
         this.getProductById = function(id) {
             return $http.get(Config.urlServer + Config.endpointProducts + "/" + id);
         };
-    });
+    }]);

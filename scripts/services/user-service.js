@@ -1,9 +1,8 @@
 // obtiene todos los usuarios
 angular
     .module("whatapop")
-    .service("UserService", function($http, Config) {
+    .service("UserService", ["$http", "Config", function($http, Config) {
         this.getUsers = function() {
-            // TODO: el puerto mejor en una constante
             return $http.get(Config.urlServer + Config.endpointUsers);
         };
-    });
+    }]);

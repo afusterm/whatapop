@@ -1,6 +1,6 @@
 angular
     .module("whatapop")
-    .directive("afmProductSelector", function(CategoryService) {
+    .directive("afmProductSelector", ["CategoryService", function(CategoryService) {
         return {
             restrict: "EA",
             
@@ -27,4 +27,4 @@ angular
                 };
             }
         };
-    });
+    }]);

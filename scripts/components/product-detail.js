@@ -2,7 +2,7 @@ angular
     .module("whatapop")
     .component("productDetail", {
         templateUrl: "views/product-detail.html",
-        controller: function(ProductService, $scope, $sce) {
+        controller: ["ProductService", "$scope", "$sce", function(ProductService, $scope, $sce) {
             let self = this;
             this.$routerOnActivate = function(next) {
                 ProductService.getProductById(next.params.id).then(function(response) {
@@ -61,5 +61,5 @@ angular
             this.validateHtml = function(text) {
                 return $sce.trustAsHtml(text);
             };
-        }
+        }]
     });
