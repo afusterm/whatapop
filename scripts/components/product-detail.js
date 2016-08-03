@@ -6,8 +6,15 @@ angular
     .module("whatapop")
     .component("productDetail", {
         templateUrl: "views/product-detail.html",
-        controller: ["ProductService", "$scope", "$sce", function(ProductService, $scope, $sce) {
+        controller: ["ProductService", "$scope", "$sce", "appSettings", function(ProductService, $scope, $sce, appSettings) {
             let self = this;
+
+            this.$onInit = function() {
+                if (!appSettings.storageIsSupported) {
+                    console.log("WebStorage no está soportado");
+                }
+            }
+
             this.$routerOnActivate = function(next) {
                 // obtiene los datos del producto con el id pasado en la URL
                 ProductService.getProductById(next.params.id).then(function(response) {
@@ -17,7 +24,7 @@ angular
                     self.product.favorite = 0;
                     
                     // si se ha guardado el id del producto es porque es favorito
-                    if (typeof(Storage) !== 'undefined') {
+                    if (appSettings.storageIsSupported) {
                         // obtener el valor de "favoritos" que será una cadena con la lista de favoritos
                         let favStr = localStorage.getItem("favorites");
 
@@ -41,7 +48,7 @@ angular
             // guarda el identificador del producto en el array "favorites" de localStorage. Este array
             // contiene los identificadores de todos los productos que son favoritos
             this.saveFavorite = function(selected) {
-                if (self.product !== 'undefined' && typeof(Storage) !== 'undefined') {
+                if (self.product !== 'undefined' && appSettings.storageIsSupported) {
                     // obtener el objeto JSON favorites que contiene el array donde guarda los id's
                     let favorites = { ids: [] };
                     let favStr = localStorage.getItem("favorites");

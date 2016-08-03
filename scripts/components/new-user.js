@@ -7,18 +7,22 @@ angular
         
         controller: ["UserService", function(UserService) {
             let self = this;
+
+            this.$onInit = function() {
+                self.user = {
+                    name: "",
+                    nick: "",
+                    avatar: "",
+                    latitude: 0.0,
+                    longitude: 0.0,
+                    email: ""
+                };
+            }
             
             // imagen para el documento de la imagen del avatar que se ha seleccionado
             let avatarImage;
             
-            this.user = {
-                name: "",
-                nick: "",
-                avatar: "",
-                latitude: 0.0,
-                longitude: 0.0,
-                email: ""
-            };
+
             
             this.createUser = function() {
                 UserService.createUser(self.user, avatarImage).then(function() {

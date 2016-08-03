@@ -1,5 +1,11 @@
 angular
     .module("whatapop")
+    .config(function(appSettings) {
+        appSettings.storageIsSupported = typeof(Storage) !== 'undefined';
+    })
+    .constant("appSettings", {
+        storageIsSupported: false
+    })
     .component("root", {
         $routeConfig: [{
             name: "Products",

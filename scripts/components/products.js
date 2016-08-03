@@ -8,13 +8,15 @@ angular
         controller: ["ProductService", function(ProductService) {
             let self = this;
 
-            // filtro de productos por categoría y nombre
-            this.ProductsFilter = { category: "", name: "" };
+            self.$onInit = function() {
+                // filtro de productos por categoría y nombre
+                self.ProductsFilter = { category: "", name: "" };
 
-            // obtener todos los productos
-            ProductService.getProducts().then(function (response) {
-                self.products = response.data;
-            });
+                // obtener todos los productos
+                ProductService.getProducts().then(function (response) {
+                    self.products = response.data;
+                });
+            }
 
             // obtiene la ruta absoluta de la imagen de un producto a partir de la ruta que contiene el producto
             this.getImageAbsolutePath = ProductService.getImageAbsolutePath;
